@@ -1,12 +1,13 @@
-FROM microsoft/aspnetcore:2.1-aspnetcore-runtime AS base
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.1-sdk AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY MCK8sAPI.sln ./
+# COPY MCK8sAPI.sln ./
 COPY MCK8sAPI/MCK8sAPI.csproj MCK8sAPI/
-RUN dotnet restore -nowarn:msb3202,nu1503
+# RUN dotnet restore -nowarn:msb3202,nu1503
+RUN dotnet restore MCK8sAPI/MCK8sAPI.csproj
 COPY . .
 WORKDIR /src/MCK8sAPI
 RUN dotnet build -c Release -o /app

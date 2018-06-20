@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   mck8sapi:
-    image: mck8sapi
+    image: minecraftadmin:v1
     build:
       context: .
       dockerfile: MCK8sAPI/Dockerfile
