@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: minecraft-backend
-        image: t12h1acr.azurecr.io/minecraft:v2
+        image: openhack/minecraft-server
         imagePullPolicy: Always
         volumeMounts:
           - name: volume
