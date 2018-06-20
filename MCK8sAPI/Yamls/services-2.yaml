@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: openhacktable12
+    component: minecraft
+  name: minecraft-backend-2
+spec:
+  selector:
+    app: openhacktable12
+    component: minecraft
+  type: LoadBalancer    
+  ports:
+  - name: minecraft
+    protocol: TCP
+    port: 25565
+    targetPort: 25565
+  - name: rcon
+    protocol: TCP
+    port: 25575
+    targetPort: 25575

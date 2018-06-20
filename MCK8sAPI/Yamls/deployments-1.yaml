@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-backend-1
+spec:
+  selector:
+    matchLabels:
+      app: openhacktable12
+      component: minecraft
+  replicas: 1
+  revisionHistoryLimit: 3
+  template:
+    metadata:
+      labels:
+        app: openhacktable12
+        component: minecraft
+    spec:
+      containers:
+      - name: minecraft-backend
+        image: openhack/minecraft-server
+        imagePullPolicy: Always
+        volumeMounts:
+          - name: volume
+            mountPath: /data  
+        env:
+        - name: EULA
+          valueFrom:
+           configMapKeyRef:
+             name: externalcfg
+             key: EULA
+        ports:
+        - containerPort: 25565
+      volumes:
+        - name: volume
+          persistentVolumeClaim:
+            claimName: azure-managed-disk-1
