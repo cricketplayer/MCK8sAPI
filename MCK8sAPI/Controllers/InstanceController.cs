@@ -15,7 +15,7 @@ namespace MCK8sAPI.Controllers
         private readonly IKubernetes client;
         public InstanceController()
         {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
+            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile("./config");
             client = new Kubernetes(config);
 
 
