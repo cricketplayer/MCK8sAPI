@@ -1,8 +1,8 @@
-FROM microsoft/aspnetcore:2.1 AS base
+FROM microsoft/aspnetcore:2.1-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.1 AS build
+FROM microsoft/aspnetcore-build:2.1-sdk AS build
 WORKDIR /src
 COPY MCK8sAPI.sln ./
 COPY MCK8sAPI/MCK8sAPI.csproj MCK8sAPI/
